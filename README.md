@@ -5,11 +5,11 @@ Projeto de exemplo para execução de containers docker com API REST Java embuti
 ### Considerações
 
 #### Autenticação dockerhub
-A autenticação ao dockerhub está sendo feita da forma mais simples, utilizando o POM.XML. Para que a imagem gerada seja enviada ao seu repositório, basta alterar as tasgs abaixo. Existem outas outras formas mais seguras de autenticação, conforme informado no artigo. Lembre-se que este projeto é apenas um tutorial, mas aos fazer isso em seu projeto, informações sensíveis de sua credencial estarão expostas.
+A autenticação ao dockerhub está sendo feita da forma mais simples, utilizando o POM.XML. Para que a imagem gerada seja enviada ao seu repositório, basta criar as variáveis de ambiente local com seu usuário e senha do dockerhub. Existem outas outras formas mais seguras de autenticação, conforme informado no artigo. Lembre-se que este projeto é apenas um tutorial, mas aos fazer isso em seu ambiente, informações sensíveis de sua credencial podem ficar expostas.
 ```xml
-<username>username</username>
-<password>password</password>
 <repository>conta/repo</repository>
+<username>${env.DOCKERHUB_USERNAME}</username>
+<password>${env.DOCKERHUB_PASSWORD}</password>
 ```
 
 
