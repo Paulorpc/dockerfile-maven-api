@@ -1,6 +1,7 @@
 package br.blog.smarti.dockerfilemavenapi.controllers;
 
 import java.net.URI;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -34,8 +35,7 @@ public class HelloController {
 		ResponseDto response = new ResponseDto(getUri());
 
 		if (result.hasErrors()) {
-			response.setMensagem(result.getAllErrors().stream().map(e -> e.getDefaultMessage())
-					.collect(Collectors.toList()).toString());
+			response.setMensagem(mapResultErrorsAsList(result).toString());
 			log.error("Fahal na requisição: {}", response.getMensagem());
 			return ResponseEntity.badRequest().body(response);
 		}
@@ -50,6 +50,10 @@ public class HelloController {
 
 	private static URI getUri() {
 		return ServletUriComponentsBuilder.fromCurrentRequest().build().toUri();
+	}
+
+	private List<String> mapResultErrorsAsList(BindingResult result) {
+		return result.getAllErrors().stream().map(e -> e.getDefaultMessage()).collect(Collectors.toList());
 	}
 
 }
