@@ -31,7 +31,7 @@ Dentro do projeto, existe a pasta `src/main/resources/tomcat/conf`. Está pasta 
 #### Execução Docker Image
 https://hub.docker.com/repository/docker/smartiblogbr/dockerfilemavenplugin
 ```shell 
-$ docker run --name smarti -d -p 8080:8080 smartiblogbr/dockerfilemavenplugin:1.0
+$ docker run --name smarti -d -p 8080:8080 smartiblogbr/dockerfilemavenapi:1.0
 ```
 
 #### Verificação:
